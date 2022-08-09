@@ -17,7 +17,7 @@
         </div>
 
         <ul id="menu">
-            <li><a href="index.php">Inicio</a></li>
+            <li class="active"><a href="index.php">Inicio</a></li>
             <li><a href="index.php?action=assign">Asignar</a></li>
             <li><a href="index.php?action=consult">Consultar Cita</a></li>
             <li><a href="index.php?action=cancel">Cancelar Cita</a></li>
