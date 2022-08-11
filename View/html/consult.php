@@ -29,7 +29,7 @@
                 <table>
                     <tr>
                         <td>Documento del Paciente</td>
-                        <td><input type="text" name="consultDocument" id="consultDocument"></td>
+                        <td><input type="text" name="consultIdentification" id="consultIdentification"></td>
                     </tr>
                     <tr>
                         <td colspan="2">

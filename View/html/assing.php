@@ -44,7 +44,7 @@
                         <td>
                             <select name="medical" id="medical">
                                 <option value="-1" selected="selected">---Seleccione el Médico</option>
-                                <option value="12345">12345-Pepito Pérez</option>
+                                <option value="6789">12345-Pepito Pérez</option>
                                 <option value="67890">67890-Pepita Medieta</option>
                             </select>
                         </td>

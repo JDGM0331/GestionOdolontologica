@@ -1,5 +1,7 @@
 <?php
 
+use LDAP\Result;
+
     class AppointmentManager {
 
         public function addAppointment(Appointment $appointment){
@@ -12,8 +14,7 @@
             $office = $appointment->getOffice(); 
             $state = $appointment->getState(); 
             $observations = $appointment->getObservations(); 
-            $sql = "INSERT INTO citas values (
-                null, 
+            $sql = "INSERT INTO citas values (null, 
                 '$date', 
                 '$time', 
                 '$patient', 
@@ -21,7 +22,7 @@
                 '$office', 
                 '$state', 
                 '$observations')";
-            $connection->consult($sql); 
+            $connection->consult($sql);
             $appointmentId = $connection->getAppointmentId();
             $connection->close(); 
             return $appointmentId;  
@@ -30,11 +31,11 @@
         public function consultAppointmentById($id){
             $connection = new Connection();
             $connection->open(); 
-            $sql = "SELECT pacientes.*, medicos.*, consultorios.*, citas.*"
-                ."FROM pacientes as p, medicos as m, consultorios as c, citas "
-                ."WHERE C.CitPaciente = p.PacIdentificacion "
-                ." AND citas.CitMedico = m.MedIdentificacion "
-                ." AND citas.CitNumero = $id";
+            $sql = "SELECT pacientes.*, medicos.*, consultorios.*, citas.* "
+                ."FROM pacientes, medicos, consultorios, citas "
+                ."WHERE citas.CitPaciente = pacientes.PacIdentificacion "
+                ." AND citas.CitMedico = medicos.MedIdentificacion "
+                ." AND citas.CitNumero = $id"; 
             $connection->consult($sql); 
             $result = $connection->getResult(); 
             $connection->close(); 
@@ -47,8 +48,8 @@
             $sql = "SELECT * FROM citas "
                 ."WHERE CitPaciente = '$ide' "
                 ." AND CitEstado = 'Solicitada' "; 
-            $connection->consult($sql); 
-            $result = $connection->getResult(); 
+            $connection->consult($sql);   
+            $result = $connection->getResult();    
             $connection->close(); 
             return $result; 
         }

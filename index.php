@@ -1,17 +1,39 @@
 <body>
     <?php
+
+        require_once 'Controller/controller.php'; 
+        require_once 'Model/AppointmentManager.php'; 
+        require_once 'Model/Appointment.php'; 
+        require_once 'Model/Patient.php'; 
+        require_once 'Model/Connection.php'; 
+
+        $controller = new Controller(); 
+
         if( isset($_GET["action"])){
             if($_GET["action"] == "assign"){
-                require_once 'View/html/assing.php';
+                $controller->seePage('View/html/assing.php');
             }
-            if($_GET["action"] == "consult"){
-                require_once 'View/html/consult.php';
+            elseif($_GET["action"] == "consult"){
+                $controller->seePage('View/html/consult.php');
             }
-            if($_GET["action"] == "cancel"){
-                require_once 'View/html/cancel.php';
+            elseif($_GET["action"] == "cancel"){
+                $controller->seePage('View/html/cancel.php'); 
             }
+            elseif($_GET["action"] == "saveAppointment"){$controller->addAppointment($_POST["assignDocument"],
+                $_POST["medical"],
+                $_POST["date"],
+                $_POST["time"],
+                $_POST["office"]); 
+            }
+            elseif($_GET["action"] == "consultAppointment") {
+                $controller->consultAppointments($_POST["consultIdentification"]);
+            }
+            elseif($_GET["action"] == "cancelAppointment"){
+                $controller->cancelAppointments($_POST["cancelIdentification"]); 
+            } 
         } else {
-            require_once 'View/html/homepage.php';
+            $controller->seePage('View/html/homepage.php'); 
         }
+
     ?>
 </body>

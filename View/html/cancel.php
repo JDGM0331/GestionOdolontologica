@@ -30,7 +30,7 @@
                     <tr>
                         <td>Documento del Paciente </td>
                         <td>
-                            <input type="text" name="cancelDocument" id="cancelDocument">
+                            <input type="text" name="cancelIdentification" id="cancelIdentification">
                         </td>
                     </tr>
                     <tr>
