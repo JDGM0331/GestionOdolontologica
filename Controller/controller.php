@@ -1,5 +1,7 @@
 <?php
 
+use FFI\ParserException;
+
     class Controller {
 
         public function seePage($route){
@@ -24,6 +26,23 @@
             $appointmentManager = new AppointmentManager(); 
             $result = $appointmentManager->consultAppointmentsByIdentification($ide); 
             require_once 'View/html/cancelAppointments.php'; 
+        }
+
+        public function consulPatient($ide){
+            $appointmentManager = new AppointmentManager(); 
+            $result = $appointmentManager->consultPatient($ide); 
+            require_once 'View/html/consultPatient.php'; 
+        }
+
+        public function addPatient($ide, $nom, $sur, $dat, $sex){
+            $patient = new Patient($ide, $nom, $sur, $dat, $sex); 
+            $appointmentManager = new AppointmentManager(); 
+            $records = $appointmentManager->addPatient($patient); 
+            if($records > 0){
+                echo "Se insertó el paciente con éxito"; 
+            } else {
+                echo "Error al registrar paciente"; 
+            }
         }
 
     }

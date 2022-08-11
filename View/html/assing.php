@@ -7,6 +7,11 @@
     <title>Sistema de Gestión Odontológica</title>
 
     <link rel="stylesheet" type="text/css" href="View/css/styles.css">
+    <script type="text/javascript" src="View/jquery/jquery-3.6.0.min.js"></script>
+
+    <script type="text/javascript" src="View/jquery/jquery-ui-1.13.2/jquery-ui.js"></script>
+    <link rel="stylesheet" type="text/css" href="View/jquery/jquery-ui-1.13.2/jquery-ui.min.css">
+    <script type="text/javascript" src="View/js/script.js"></script>
 
 </head>
 <body>
@@ -31,10 +36,10 @@
                 <table>
                     <tr>
                         <td>Documento del paciente</td>
-                        <td><input type="text" name="assignDocument" id="assignDocument"></td>
+                        <td><input type="text" name="assignIdentification" id="assignIdentification"></td>
                     </tr>
                     <tr>
-                        <td colspan="2"><input type="button" value="Consultar" name="assignConsult" id="assignConsult"></td>
+                        <td colspan="2"><input type="button" value="Consultar" name="assignConsult" id="assignConsult" onclick="consultPatient()"></td>
                     </tr>
                     <tr>
                         <td colspan="2"><div id="patient"></div></td>
@@ -86,6 +91,39 @@
             </form>
 
         </div>
+    </div>
+
+    <div id="frmPatient" title="Agregar Nuevo Paciente">
+        <form id="addPatient">
+            <table>
+                <tr>
+                    <td>Documento</td>
+                    <td><input type="text" name="PatIdentification" id="PatIdentification"></td>
+                </tr>
+                <tr>
+                    <td>Nombres</td>
+                    <td><input type="text" name="PatNames" id="PatNames"></td>
+                </tr>
+                <tr>
+                    <td>Apellidos</td>
+                    <td><input type="text" name="PatSurnames" id="PatSurnames"></td>
+                </tr>
+                <tr>
+                    <td>Fecha de Nacimiento</td>
+                    <td><input type="date" name="PatBirth" id="PatBirth"></td>
+                </tr>
+                <tr>
+                    <td>Sexo</td>
+                    <td>
+                        <select name="PatSex" id="PatSex">
+                            <option value="-1" selected="selected">--Seleccione el sexo ---</option>
+                            <option value="M">Masculino</option>
+                            <option value="F">Femenino</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </form>
     </div>
 
 </body>

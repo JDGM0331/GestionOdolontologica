@@ -7,6 +7,8 @@
     <title>Sistema de Gestión Odontológica</title>
 
     <link rel="stylesheet" type="text/css" href="View/css/styles.css">
+    <script type="text/javascript" src="View/jquery/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="View/js/script.js"></script>
 
 </head>
 <body>

@@ -19,7 +19,7 @@
             elseif($_GET["action"] == "cancel"){
                 $controller->seePage('View/html/cancel.php'); 
             }
-            elseif($_GET["action"] == "saveAppointment"){$controller->addAppointment($_POST["assignDocument"],
+            elseif($_GET["action"] == "saveAppointment"){$controller->addAppointment($_POST["assignIdentification"],
                 $_POST["medical"],
                 $_POST["date"],
                 $_POST["time"],
@@ -30,6 +30,18 @@
             }
             elseif($_GET["action"] == "cancelAppointment"){
                 $controller->cancelAppointments($_POST["cancelIdentification"]); 
+            } 
+            elseif($_GET["action"] == "consultPatient"){
+                $controller->consulPatient($_GET["identification"]); 
+            } 
+            elseif($_GET["action"] == "addPatient"){
+                $controller->addPatient(
+                    $_GET["PatIdentification"],
+                    $_GET["PatNames"],
+                    $_GET["PatSurnames"],
+                    $_GET["PatBirth"],
+                    $_GET["PatSex"]
+                ); 
             } 
         } else {
             $controller->seePage('View/html/homepage.php'); 
