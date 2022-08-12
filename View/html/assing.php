@@ -47,10 +47,13 @@
                     <tr>
                         <td>Médico</td>
                         <td>
-                            <select name="medical" id="medical">
+                            <select name="medical" id="medical" onchange="chargeHours()">
                                 <option value="-1" selected="selected">---Seleccione el Médico</option>
-                                <option value="6789">12345-Pepito Pérez</option>
-                                <option value="67890">67890-Pepita Medieta</option>
+                                <?php while($row = $result->fetch_object()){ ?> <!-- Returns an object with stirng properties corresponding to the fetched row. -->
+                                    <option value="<?php echo $row->MedIdentificacion ?>">
+                                        <?php echo $row->MedIdentificacion." ".$row->MedNombres." ".$row->MedApellidos; ?>
+                                    </option>
+                                <?php } ?>
                             </select>
                         </td>
                     </tr>
@@ -63,22 +66,22 @@
                     <tr>
                         <td>Hora</td>
                         <td>
-                            <select name="time" id="time">
+                            <select name="time" id="time" onmousedown="selectHour()" onchange="chargeHours()">
+                                <!-- onmousedown is a event that occurs when a user presses a mouse button on the element -->
                                 <option value="-1" selected="selected"> ---Seleccione la hora ---</option>
-                                <option>08:00:00</option>
-                                <option>08:20:00</option>
-                                <option>08:40:00</option>
-                                <option>09:00:00</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <td>Consultorio</td>
                         <td>
-                            <select name="office" id="office">
+                            <select name="office" id="office" onchange="chargeHours()">
                                 <option value="-1" selected="selected">---Seleccione el Consultorio</option>
-                                <option value="1">1 Consultas 1</option>
-                                <option value="2">2 Tratamientos 1</option>
+                                <?php while($row = $result2->fetch_object()){ ?> 
+                                    <option value="<?php echo $row->ConNumero; ?>">
+                                        <?php echo $row->ConNumero." - ".$row->ConNombre; ?>
+                                    </option>
+                                <?php } ?> 
                             </select>
                         </td>
                     </tr>

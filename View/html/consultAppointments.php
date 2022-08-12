@@ -21,7 +21,7 @@
                     <td><?php echo $row->CitFecha; ?></td>
                     <td><?php echo $row->CitHora; ?></td>
                     <td>
-                        <a href="#">Ver</a>
+                        <a href="index.php?action=viewAppointment&number=<?php echo $row->CitNumero; ?>">Ver</a>
                     </td>
                 </tr>
             <?php } ?>

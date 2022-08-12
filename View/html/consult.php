@@ -8,6 +8,9 @@
 
     <link rel="stylesheet" type="text/css" href="View/css/styles.css">
     <script type="text/javascript" src="View/jquery/jquery-3.6.0.min.js"></script>
+
+    <script type="text/javascript" src="View/jquery/jquery-ui-1.13.2/jquery-ui.js"></script>
+    <link rel="stylesheet" type="text/css" href="View/jquery/jquery-ui-1.13.2/jquery-ui.min.css">
     <script type="text/javascript" src="View/js/script.js"></script>
 
 </head>
@@ -27,15 +30,17 @@
 
         <div id="contents">
             <h2>Consultar Cita</h2>
-            <form action="index.php?action=consultAppointment" id="frmConsult" method="post">
+            <form action="index.php?action=consultAppointment" id="frmConsult" method="get">
                 <table>
                     <tr>
                         <td>Documento del Paciente</td>
-                        <td><input type="text" name="consultIdentification" id="consultIdentification"></td>
+                        <td>
+                            <input type="text" name="consultIdentification" id="consultIdentification">
+                        </td>
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <input type="submit" name="consultConsult" id="consultConsult" value="Consultar">
+                            <input type="button" name="consultConsult" id="consultConsult" value="Consultar" onclick="consultAppointment()">
                         </td>
                     </tr>
                     <tr>

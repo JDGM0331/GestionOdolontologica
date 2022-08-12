@@ -11,7 +11,7 @@
 
         if( isset($_GET["action"])){
             if($_GET["action"] == "assign"){
-                $controller->seePage('View/html/assing.php');
+                $controller->loadAssign(); 
             }
             elseif($_GET["action"] == "consult"){
                 $controller->seePage('View/html/consult.php');
@@ -26,10 +26,10 @@
                 $_POST["office"]); 
             }
             elseif($_GET["action"] == "consultAppointment") {
-                $controller->consultAppointments($_POST["consultIdentification"]);
+                $controller->consultAppointments($_GET["consultIdentification"]);
             }
             elseif($_GET["action"] == "cancelAppointment"){
-                $controller->cancelAppointments($_POST["cancelIdentification"]); 
+                $controller->cancelAppointments($_GET["cancelIdentification"]); 
             } 
             elseif($_GET["action"] == "consultPatient"){
                 $controller->consulPatient($_GET["identification"]); 
@@ -42,6 +42,15 @@
                     $_GET["PatBirth"],
                     $_GET["PatSex"]
                 ); 
+            } 
+            elseif($_GET["action"] == "consultHour"){
+                $controller->consultAvailableHours($_GET["medical"],$_GET["date"]); 
+            } 
+            elseif($_GET["action"] == "viewAppointment"){
+                $controller->viewAppointment($_GET["number"]); 
+            } 
+            elseif($_GET["action"] == "confirmCancel"){
+                $controller->confirmCancelAppointment($_GET["number"]); 
             } 
         } else {
             $controller->seePage('View/html/homepage.php'); 

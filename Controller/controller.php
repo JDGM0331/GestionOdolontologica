@@ -45,6 +45,35 @@ use FFI\ParserException;
             }
         }
 
+        public function loadAssign(){
+            $appointmentManager = new AppointmentManager(); 
+            $result = $appointmentManager->consultMedicals(); 
+            $result2 = $appointmentManager->consultOffices(); 
+            require_once 'View/html/assing.php'; 
+        }
+
+        public function consultAvailableHours($medical,$date){
+            $appointmentManager = new AppointmentManager(); 
+            $result = $appointmentManager->consultAvailableHours($medical, $date); 
+            require_once 'View/html/consutlHours.php'; 
+        }
+
+        public function viewAppointment($appointment){
+            $appointmentManager = new AppointmentManager(); 
+            $result = $appointmentManager->consultAppointmentById($appointment); 
+            require_once 'View/html/confirmAppointment.php'; 
+        }
+
+        public function confirmCancelAppointment($appointment){
+            $appointmentManager = new AppointmentManager(); 
+            $records = $appointmentManager->cancelAppointment($appointment); 
+            if($records > 0){
+                echo "La cita se ha cancelado con éxito"; 
+            } else {
+                echo "Hubo un error al cancelar la cita"; 
+            }
+        }
+
     }
 
 ?>

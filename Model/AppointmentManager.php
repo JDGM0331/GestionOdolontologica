@@ -94,6 +94,38 @@ use LDAP\Result;
             return $result; 
         }
 
+        public function consultAvailableHours($medical, $date){
+            $connection = new Connection(); 
+            $connection->open(); 
+            $sql = "SELECT hora FROM horas WHERE hora NOT IN "
+                ."(SELECT CitHora FROM citas WHERE CitMedico = '$medical' AND CitFecha = '$date' "
+                ."AND CitEstado = 'Solicitada')"; 
+            $connection->consult($sql); 
+            $result = $connection->getResult(); 
+            $connection->close(); 
+            return $result; 
+        }
+
+        public function consultOffices(){
+            $connection = new Connection(); 
+            $connection->open(); 
+            $sql = "SELECT * FROM consultorios "; 
+            $connection->consult($sql);
+            $result = $connection->getResult(); 
+            $connection->close(); 
+            return $result; 
+        }
+
+        public function cancelAppointment($appointment){
+            $connection = new Connection(); 
+            $connection->open(); 
+            $sql = "UPDATE citas SET CitEStado = 'Cancelada' WHERE CitNumero = $appointment"; 
+            $connection->consult($sql); 
+            $affectedRows = $connection->getAffectedRows(); 
+            $connection->close(); 
+            return $affectedRows; 
+        }
+
     }
 
 ?>

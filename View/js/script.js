@@ -35,3 +35,40 @@ function insertPatient(){
 function cancel(){
     $(this).dialog('close'); 
 }
+
+function chargeHours(){
+    if( ($("#medical").val() == -1) || ($("#date").val() == "")){
+        $("#time").html("<option value='-1' selected='selected'>---Seleccione la hora</option>")
+    } else { 
+        queryString = "medical="+$("#medical").val()+"&date="+$("#date").val();
+        url = "index.php?action=consultHour&" + queryString;
+        $("#time").load(url); 
+    }
+}
+
+function selectHour(){
+    if($("#medical").val() == -1){
+        alert("Debe seleccionar un médico"); 
+    } else if ($("#date").val() == ""){
+        alert("Debe seleccionar una fecha");
+    }
+}
+
+function consultAppointment(){
+    url = "index.php?action=consultAppointment&consultIdentification="+$("#consultIdentification").val(); 
+    $("#patient2").load(url); 
+}
+
+function cancelAppointment(){
+    url = "index.php?action=cancelAppointment&cancelIdentification="+$("#cancelIdentification").val(); 
+    $("#patient3").load(url); 
+}
+
+function confirmCancel(number){
+    if(confirm("Esta seguro de cancelar la cita "+number)){
+        $.get("index.php",{action:'confirmCancel',number:number},function(message){ /* Execute the action and receive a response */
+            alert(message.replace(/(<([^>]+)>)/ig,"")); /* Replace characters within a text string. */
+        }); 
+    }
+    $("#consultCancel").trigger("click"); /* Execute an event of a button automatically */
+}
