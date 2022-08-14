@@ -37,20 +37,22 @@ function cancel(){
 }
 
 function chargeHours(){
-    if( ($("#medical").val() == -1) || ($("#date").val() == "")){
-        $("#time").html("<option value='-1' selected='selected'>---Seleccione la hora</option>")
+    if( ($("#medical").val() == "") || ($("#date").val() == "") || ($("#office").val() == "")){
+        $("#time").html("<option value='' selected='selected'>---Seleccione la hora</option>")
     } else { 
-        queryString = "medical="+$("#medical").val()+"&date="+$("#date").val();
+        queryString = "medical="+$("#medical").val()+"&date="+$("#date").val()+"&office="+$("#office").val();
         url = "index.php?action=consultHour&" + queryString;
         $("#time").load(url); 
     }
 }
 
 function selectHour(){
-    if($("#medical").val() == -1){
+    if($("#medical").val() == ""){
         alert("Debe seleccionar un médico"); 
     } else if ($("#date").val() == ""){
         alert("Debe seleccionar una fecha");
+    } else if ($("#office").val() == ""){
+        alert("Debe seleccionar un consultorio");
     }
 }
 

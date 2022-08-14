@@ -8,9 +8,9 @@
 </head>
 <body>
     
-    <option value="-1" selected="selected">---Seleccione la hora ---</option>
+    <option value="" selected="selected">---Seleccione la hora ---</option>
     <?php while($row = $result->fetch_object()){ ?>
-        <option><?php echo $row->hora; ?></option>
+        <option value="<?php echo $row->hora; ?>"><?php echo $row->hora; ?></option>
     <?php } ?>
 
 </body>

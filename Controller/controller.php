@@ -52,9 +52,9 @@ use FFI\ParserException;
             require_once 'View/html/assing.php'; 
         }
 
-        public function consultAvailableHours($medical,$date){
+        public function consultAvailableHours($medical,$date,$office){
             $appointmentManager = new AppointmentManager(); 
-            $result = $appointmentManager->consultAvailableHours($medical, $date); 
+            $result = $appointmentManager->consultAvailableHours($medical, $date,$office); 
             require_once 'View/html/consutlHours.php'; 
         }
 

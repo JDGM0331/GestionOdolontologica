@@ -94,12 +94,12 @@ use LDAP\Result;
             return $result; 
         }
 
-        public function consultAvailableHours($medical, $date){
+        public function consultAvailableHours($medical, $date, $office){
             $connection = new Connection(); 
             $connection->open(); 
             $sql = "SELECT hora FROM horas WHERE hora NOT IN "
-                ."(SELECT CitHora FROM citas WHERE CitMedico = '$medical' AND CitFecha = '$date' "
-                ."AND CitEstado = 'Solicitada')"; 
+                ."(SELECT CitHora FROM citas WHERE CitMedico = '$medical' AND CitFecha = '$date' OR CitConsultorio = '$office'  "
+                ."AND CitEstado = 'Solicitada')";
             $connection->consult($sql); 
             $result = $connection->getResult(); 
             $connection->close(); 

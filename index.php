@@ -19,11 +19,12 @@
             elseif($_GET["action"] == "cancel"){
                 $controller->seePage('View/html/cancel.php'); 
             }
-            elseif($_GET["action"] == "saveAppointment"){$controller->addAppointment($_POST["assignIdentification"],
-                $_POST["medical"],
-                $_POST["date"],
-                $_POST["time"],
-                $_POST["office"]); 
+            elseif($_GET["action"] == "saveAppointment"){
+                $controller->addAppointment($_POST["assignIdentification"],
+                    $_POST["medical"],
+                    $_POST["date"],
+                    $_POST["time"],
+                    $_POST["office"]); 
             }
             elseif($_GET["action"] == "consultAppointment") {
                 $controller->consultAppointments($_GET["consultIdentification"]);
@@ -44,7 +45,7 @@
                 ); 
             } 
             elseif($_GET["action"] == "consultHour"){
-                $controller->consultAvailableHours($_GET["medical"],$_GET["date"]); 
+                $controller->consultAvailableHours($_GET["medical"],$_GET["date"],$_GET["office"]); 
             } 
             elseif($_GET["action"] == "viewAppointment"){
                 $controller->viewAppointment($_GET["number"]); 

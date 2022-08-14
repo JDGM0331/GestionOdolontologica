@@ -1,0 +1,7 @@
+Ajustar (ver y redirigir página anterior) los resultados de consultar y cancelar citas por documento de identificación. 
+Realizar validaciones la hora de realizar consultas. 
+cambiar todos los terminos medical a doctor. 
+ajustar consulPatient del archivo controller.php a consultPatient.
+Solucionar error de direccionamiento cuando consulto citas por identificación en el momento de dar enter una vez ingresado la identifación. 
+Validación de formulario en el momento de asignar una cita.
+ 
